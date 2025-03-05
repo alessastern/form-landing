@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="#"><i>My Landing Page</i></a
+      ><span>&hearts;</span
+      ><a href="tel:89999999999" id="phone">8(999)999-99-99</a>
+    </div>
+    <div class="container">
+      <h2>Welcome to my landing</h2>
+      <p class="message">
+        Receive a newsletter and subscribe to activities, simply fill the form!
+      </p>
+      <div class="actbtn">
+        <button id="action" class="action">Subscribe</button>
+      </div>
+      <dialog id="modal">
+        <div class="modal-content">
+          <button id="close" class="close">x</button>
+          <form class="subscribeForm" method="dialog">
+            <label>name</label>
+            <input type="text" placeholder="name" required />
+            <label>email</label>
+            <input type="email" placeholder="example@test.com" required />
+            <button type="submit" class="submit">Subscribe</button>
+          </form>
+        </div>
+      </dialog>
+      <script>
+        const modal = document.getElementById("modal");
+        const actionButton = document.getElementById("action");
+        const closeButton = document.getElementById("close");
+        actionButton.addEventListener("click", () => {
+          modal.showModal();
+        });
+        closeButton.addEventListener("click", (event) => {
+          modal.close();
+        });
+      </script>
+      <p>Offer will soon expire!</p>
+      <span id="timer" class="timer"></span>
+      <script>
+        var countDownDate = new Date(Date.now());
+        countDownDate.setMinutes(countDownDate.getMinutes() + 10);
+        countDownDate = countDownDate.getTime();
+        var timer = setInterval(() => {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          document.getElementById("timer").innerHTML =
+            ("0" + hours).slice(-2) +
+            ":" +
+            ("0" + minutes).slice(-2) +
+            ":" +
+            ("0" + seconds).slice(-2);
+          if (minutes < 1) {
+            document.getElementById("timer").classList.add("ending");
+          }
+          if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+      </script>
+      <p class="footer">
+        made by me for studying purposes, I don't own the design
+      </p>
+    </div>
+  </body>
+</html>
