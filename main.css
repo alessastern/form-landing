@@ -79,7 +79,7 @@ body {
   margin: auto;
   margin-top: -1em;
   margin-left: -3em;
-  content: url(/arrow.svg);
+  content: url(arrow.svg);
   width: 3em;
   height: 3em;
   transform: rotate(20deg);
